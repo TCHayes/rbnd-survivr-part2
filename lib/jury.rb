@@ -18,12 +18,10 @@ class Jury
 		# The first line below is for the initial "rigged" tests where the finalists aren't random.
 		#finalists.each {|finalist| @finalists[finalist] = 0}
 		vote_count = Hash.new(0)
-		#@members.each {|member| vote_count[member]}
 		@members.each do |member|
 			vote = @members.sample
 			vote_count[vote] += 1
-			#This part below is somehow breaking my code.
-			#puts "#{member} voted for #{@members[vote]}."
+			puts "#{member.to_s.capitalize} voted for #{vote.to_s.capitalize}."
 		end
 		vote_count.sort_by {|k, v| v}
 		2.times do
