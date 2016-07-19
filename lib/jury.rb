@@ -3,7 +3,7 @@ class Jury
 
 	def initialize
 		@members = []
-		@finalists = {}
+		@finalists = Hash.new(0)
 	end
 
 	def add_member(member)
@@ -15,19 +15,23 @@ class Jury
 	end
 
 	def cast_votes(finalists)
-		# The first line below is for the initial "rigged" tests where the finalists aren't random.
-		#finalists.each {|finalist| @finalists[finalist] = 0}
-		vote_count = Hash.new(0)
+		finalists.each { |contestant| @finalists[contestant] = 0}
 		@members.each do |member|
-			vote = @members.sample
-			vote_count[vote] += 1
+			vote = finalists.sample
+			@finalists[vote] += 1
 			puts "#{member.to_s.capitalize} voted for #{vote.to_s.capitalize}."
 		end
-		vote_count.sort_by {|k, v| v}
-		2.times do
-			key, value = vote_count.shift
-			@finalists[key] = value
-		end
+		# Line below sorts finalists so first element is winner.
+		@finalists.sort_by {|k, v| v}
 		return @finalists
+	end
+
+	def report_votes(final_votes)
+		puts "#{final_votes[0][0]} received #{final_votes[0][1]} votes."
+		puts "#{final_votes[1][0]} received #{final_votes[1][1]} votes."
+	end
+
+	def announce_winner(final_votes)
+		final_votes.first[0]
 	end
 end
