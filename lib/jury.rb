@@ -21,17 +21,15 @@ class Jury
 			@finalists[vote] += 1
 			puts "#{member.to_s.capitalize} voted for #{vote.to_s.capitalize}."
 		end
-		# Line below sorts finalists so first element is winner.
-		@finalists.sort_by {|k, v| v}
 		return @finalists
 	end
 
 	def report_votes(final_votes)
-		puts "#{final_votes[0][0]} received #{final_votes[0][1]} votes."
-		puts "#{final_votes[1][0]} received #{final_votes[1][1]} votes."
+		puts "#{final_votes.keys[0].to_s.capitalize} received #{final_votes.values[0]} votes."
+		puts "#{final_votes.keys[1].to_s.capitalize} received #{final_votes.values[1]} votes."
 	end
 
 	def announce_winner(final_votes)
-		final_votes.first[0]
+		final_votes.max_by{|k, v| v}[0]
 	end
 end
