@@ -26,6 +26,6 @@ class Jury
 	end
 
 	def announce_winner(final_votes)
-		final_votes.max_by{|k, v| v}[0]
+		puts "#{final_votes.max_by{|k, v| v}[0].to_s.capitalize} is the winner!"
 	end
 end
