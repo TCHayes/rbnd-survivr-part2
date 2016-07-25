@@ -10,10 +10,6 @@ class Jury
 		@members << member
 	end
 
-	def members
-		@members
-	end
-
 	def cast_votes(finalists)
 		finalists.each { |contestant| @finalists[contestant] = 0}
 		@members.each do |member|
