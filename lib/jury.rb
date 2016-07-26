@@ -1,3 +1,5 @@
+require 'colorizr'
+
 class Jury
 	attr_accessor :members
 

@@ -1,3 +1,4 @@
+require 'colorizr'
 require_relative "game"
 require_relative "tribe"
 require_relative "contestant"
@@ -35,7 +36,6 @@ def phase_three
 		@jury.add_member(voted_off)
 	}
 end
-
 
 # If all the tests pass, the code below should run the entire simulation!!
 #=========================================================
