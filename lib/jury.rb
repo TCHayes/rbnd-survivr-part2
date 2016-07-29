@@ -1,5 +1,3 @@
-require 'colorizr'
-
 class Jury
 	attr_accessor :members
 
@@ -29,5 +27,6 @@ class Jury
 
 	def announce_winner(final_votes)
 		puts "#{final_votes.max_by{|k, v| v}[0].to_s.capitalize} is the winner!"
+		final_votes.max_by{|k, v| v}[0]
 	end
 end
